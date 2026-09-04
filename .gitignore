@@ -1,0 +1,15 @@
+# Database — contains a real account with a plaintext password.
+# If this is committed once, it is public forever.
+*.db
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment / secrets files
+.env
