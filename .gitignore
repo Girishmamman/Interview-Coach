@@ -13,3 +13,6 @@ env/
 
 # Environment / secrets files
 .env
+
+# Local staging area for the day-by-day publish plan — never push
+_stages/
