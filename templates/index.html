@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERVIEW COACH</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Flask Static CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Navbar -->
+        <div class="navbar">
+
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+                <div class="logo-text">
+                    INTERVIEW COACH
+                </div>
+            </div>
+
+            
+
+            <div class = "tabs">
+
+                <div class="login">
+
+                    <div class="login-link">
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </div>
+
+                    <div class="login-logo">
+                        <a href="{{ url_for('login') }}">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="signup">
+                    <div class="signup-link">
+                        <a href="{{ url_for('signup') }}">Sign Up</a>
+                    </div>
+
+                    <div class="signup-logo">
+                        <a href="{{ url_for('signup') }}">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Main Section -->
+            <div class="main">
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <span class="hero-badge">
+                <i class="fa-solid fa-robot"></i>
+                AI Powered Interview Preparation
+            </span>
+
+            <h1>
+                Land Your Dream Job <br>
+                With Confidence.
+            </h1>
+
+            <p>
+                Prepare for Technical, HR and Mock interviews using AI-powered
+                feedback. Practice coding questions, improve communication,
+                receive instant evaluation and build confidence before your
+                real interview.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{{ url_for('login') }}" class="primary-btn">
+                    Start Interview
+                </a>
+
+                <a href="#features" class="secondary-btn">
+                    Learn More
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="stat">
+
+                    <h2>1200+</h2>
+
+                    <span>Interview Questions</span>
+
+                </div>
+
+                <div class="stat">
+
+                    <h2>95%</h2>
+
+                    <span>AI Accuracy</span>
+
+                </div>
+
+                <div class="stat">
+
+                    <h2>24/7</h2>
+
+                    <span>Available</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-right">
+
+            <img src="{{ url_for('static', filename='ic.jpg') }}"
+                 alt="Interview">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section id="features" class="features-heading">
+
+        <h2>Coaching Built For Real Interviews</h2>
+
+        <p>
+            Our AI Interview Coach helps you prepare for every stage of the
+            hiring process with personalized guidance and instant feedback.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= FEATURE CARDS ================= -->
+
+    <section class="feature-cards">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+            <h3>Technical Interviews</h3>
+
+            <p>
+                Practice DSA, Python, C++, DBMS, Operating Systems,
+                Computer Networks and aptitude questions with
+                AI-generated feedback and detailed explanations.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+            </div>
+
+            <h3>HR Interviews</h3>
+
+            <p>
+                Improve communication skills, confidence,
+                body language and behavioural interview
+                responses through realistic HR simulations.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+            </div>
+
+            <h3>AI Performance Analysis</h3>
+
+            <p>
+                Receive instant scores, strengths,
+                weaknesses, hints, key points and
+                improvement suggestions after every interview.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= STATS SECTION ================= -->
+
+    <section class="stats-section">
+
+        <div class="stats-box">
+
+            <h2>5000+</h2>
+
+            <span>Questions</span>
+
+        </div>
+
+        <div class="stats-box">
+
+            <h2>20+</h2>
+
+            <span>Subjects</span>
+
+        </div>
+
+        <div class="stats-box">
+
+            <h2>100+</h2>
+
+            <span>Mock Tests</span>
+
+        </div>
+
+        <div class="stats-box">
+
+            <h2>95%</h2>
+
+            <span>Success Rate</span>
+
+        </div>
+
+    </section>
+    <section class="services">
+
+    <div class="section-title">
+
+        <h2>Why Choose Interview Coach?</h2>
+
+        <p>
+            Everything you need to prepare for technical and HR interviews in one platform.
+        </p>
+
+    </div>
+
+    <div class="services-grid">
+
+        <!-- Technical -->
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                <i class="fa-solid fa-code"></i>
+            </div>
+
+            <h3>Technical Interviews</h3>
+
+            <p>
+                Practice Python programming questions with AI-powered answer evaluation.
+            </p>
+
+        </div>
+
+        <!-- HR -->
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+
+            <h3>HR Interviews</h3>
+
+            <p>
+                Improve communication and confidence by practicing common HR interview questions.
+            </p>
+
+        </div>
+
+        <!-- AI -->
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+
+            <h3>AI Evaluation</h3>
+
+            <p>
+                Receive instant AI-generated feedback and answer evaluation after every response.
+            </p>
+
+        </div>
+
+        
+
+        <!-- Difficulty -->
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <h3>Difficulty Levels</h3>
+
+            <p>
+                Practice Easy, Medium and Hard interview questions based on your skill level.
+            </p>
+
+        </div>
+
+        
+
+        
+
+    </div>
+
+</section>
+
+    </div>
+
+</body>
+</html>
