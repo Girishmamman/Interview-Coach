@@ -17,3 +17,47 @@ def index():
 @app.route('/home')
 def home():
     return render_template('index.html')
+    
+
+# =========================
+# LOGIN PAGE
+# =========================
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    if request.method == 'POST':
+
+        username = request.form['username']
+        password = request.form['password']
+
+        if username == "admin" and password == "admin123":
+            session['admin'] = username
+            return redirect(url_for('admin'))
+
+        conn = sqlite3.connect(DB_PATH)
+        cur = conn.cursor()
+
+        cur.execute(
+            "SELECT * FROM users WHERE username=? AND password=?",
+            (username, password)
+        )
+
+        user = cur.fetchone()
+
+        conn.close()
+
+        if user:
+            session['username'] = username
+            return redirect(url_for('dashboard'))
+
+        else:
+            return render_template(
+                'login.html',
+                error ="Invalid Username or Password"
+            )
+
+    return render_template('login.html')
+
+

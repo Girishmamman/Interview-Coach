@@ -1,0 +1,471 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:96.7vh;
+
+    background:linear-gradient(
+        110deg,
+        #ffc18c 0%,
+        #f7dddd 50%,
+        #62d5f6 100%
+    );
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    width:calc(100% - 80px);
+    height:70px;
+
+    margin:22px 40px;
+
+    padding:0 28px;
+
+    background:rgba(255,255,255,0.12);
+
+    border:2px solid rgba(255,255,255,0.45);
+    border-radius:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    position:relative;
+
+    z-index:10;
+    margin-bottom: -7px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+}
+
+.logo-icon{
+    width:auto;
+    height:auto;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:transparent;
+
+    color:#161616;
+
+    font-size:27px;
+}
+
+.logo-text{
+    color:#161616;
+
+    font-size:28px;
+    font-weight:600;
+
+    letter-spacing:-1px;
+}
+
+
+/* =========================
+   NAVBAR TABS
+========================= */
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:row;
+
+    gap:40px;
+}
+
+
+/* =========================
+   HOME BUTTON
+========================= */
+
+.home{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    font-size:18px;
+    font-weight:bold;
+}
+
+.home-icon a,
+.home-text a{
+    color:#161616;
+
+    text-decoration:none;
+
+    transition:0.3s;
+}
+
+.home-icon a:hover,
+.home-text a:hover{
+    opacity:0.6;
+
+    transform:scale(1.2);
+}
+
+.home-icon{
+    display:none;
+}
+
+
+/* =========================
+   MAIN SECTION
+========================= */
+
+.main{
+    min-height:calc(100vh - 114px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px 20px;
+
+    background:transparent;
+}
+
+
+/* =========================
+   LOGIN FORM
+========================= */
+
+.login-form{
+    width:100%;
+    max-width:520px;
+
+    padding:40px;
+
+    background:rgba(255,255,255,0.45);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    border:2px solid rgba(255,255,255,0.5);
+    border-radius:25px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,0.10);
+}
+
+
+/* =========================
+   HEADINGS
+========================= */
+
+h3{
+    color:#161616;
+
+    text-align:center;
+
+    font-size:28px;
+    font-weight:700;
+
+    margin-bottom:25px;
+}
+
+h4{
+    color:#333333;
+
+    text-align:center;
+
+    font-size:16px;
+    font-weight:500;
+
+    margin-top:20px;
+
+    
+}
+
+.new-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+}
+
+
+/* =========================
+   INPUT GROUPS
+========================= */
+
+.text-group{
+    margin:18px 0;
+}
+
+.text-group label{
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+    color:#333333;
+}
+
+
+/* =========================
+   INPUT FIELDS
+========================= */
+
+.text-group input{
+    width:100%;
+
+    padding:13px 15px;
+
+    background:rgba(255,255,255,0.55);
+
+    border:1.5px solid rgba(0,0,0,0.15);
+    border-radius:10px;
+
+    font-size:15px;
+
+    transition:0.3s;
+}
+
+.text-group input:focus{
+    outline:none;
+
+    background:rgba(255,255,255,0.8);
+
+    border-color:#161616;
+
+    box-shadow:0 0 0 3px rgba(0,0,0,0.08);
+}
+
+
+/* =========================
+   BUTTON CONTAINER
+========================= */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:15px;
+
+    margin-top:25px;
+
+    flex-wrap:wrap;
+}
+
+a{
+    text-decoration:none;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button{
+    min-width:140px;
+
+    padding:12px 16px;
+
+    border:1.5px solid #161616;
+    border-radius:12px;
+
+    background:#161616;
+
+    color:#ffffff;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:8px;
+
+    transition:0.3s;
+}
+
+button:hover{
+    background:transparent;
+
+    color:#161616;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.12);
+}
+
+
+/* =========================
+   VIEW BUTTON
+========================= */
+
+.view-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:140px;
+
+    padding:12px;
+
+    margin:18px auto;
+
+    background:rgba(255,255,255,0.15);
+
+    color:#161616;
+
+    border:1.5px solid #161616;
+    border-radius:12px;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.view-btn:hover{
+    background:#161616;
+
+    color:#ffffff;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   HORIZONTAL RULE
+========================= */
+
+hr{
+    border:none;
+
+    height:1px;
+
+    background:rgba(0,0,0,0.15);
+
+    margin:20px 0;
+}
+
+
+/* =========================
+   ERROR BOX
+========================= */
+
+.error-box{
+    padding:10px;
+
+    margin:10px 0;
+
+    background:rgba(255,229,229,0.8);
+
+    color:#d32f2f;
+
+    border:1px solid rgba(211,47,47,0.2);
+    border-radius:8px;
+
+    text-align:center;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    .navbar{
+        width:calc(100% - 20px);
+        height:55px;
+
+        margin:10px;
+
+        padding:0 15px;
+
+        border-radius:16px;
+        align-items: center;
+    }
+
+    .logo-icon{
+        display:none;
+    }
+
+    .logo-text{
+        font-size:18px;
+
+        letter-spacing:0;
+    }
+
+    .home{
+        font-size:22px;
+    }
+
+    .home-icon{
+        display: flex;
+    }
+
+    .home-text{
+        display: none;
+    }
+
+    .main{
+        min-height:calc(100vh - 85px);
+
+        padding:15px;
+    }
+
+    .login-form{
+        padding:25px;
+
+        border-radius:20px;
+    }
+
+    h3{
+        font-size:24px;
+    }
+
+    .buttons{
+        flex-direction:column;
+
+        width:100%;
+    }
+
+    .buttons button{
+        width:100%;
+    }
+
+    .buttons a{
+        width:100%;
+    }
+
+    .view-btn{
+        width:100%;
+    }
+}
