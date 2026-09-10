@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-briefcase"></i>
+            </div>
+
+            <div class="logo-text">
+                INTERVIEW COACH
+            </div>
+        </div>
+        <div class ="tabs">
+            <div class="admin">
+                <a href="{{ url_for('index') }}">Back</a>
+            </div>
+
+            
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="login-form">
+
+            <form action="{{ url_for('signup') }}" method="POST">
+
+                <h3>Create Account</h3>
+                <hr>
+
+                <div class="text-group">
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter username"
+                        required>
+                </div>
+
+                <div class="text-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter password"
+                        required>
+                </div>
+
+                <div class="text-group">
+                    <label>Confirm Password</label>
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Re-enter password"
+                        required>
+                </div>
+
+                {% if error %}
+                    <div class="error-box">
+                    {{ error }}
+                    </div>
+                {% endif %}
+
+                <button type="submit">
+                    Sign Up
+                </button>
+
+                <br><br>
+
+                <a href="{{ url_for('login') }}">
+                    Already have an account? Login
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
