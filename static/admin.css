@@ -1,7 +1,3 @@
-/* =========================
-   GLOBAL STYLES
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -20,7 +16,15 @@ body{
 
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+    line-height:1.5;
     overflow-x:hidden;
+}
+
+.container{
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
 }
 
 
@@ -136,36 +140,34 @@ body{
     align-items:center;
 }
 
-
-
 /* =========================
-   MAIN
+   MAIN SECTION
 ========================= */
 
 .main{
-    width:100%;
+    flex:1;
 
-    min-height:calc(100vh - 114px);
+    padding:30px 40px;
 
     display:flex;
     justify-content:center;
     align-items:center;
-
-    padding:30px 20px;
 
     background:transparent;
 }
 
 
 /* =========================
-   FORM BOX
+   FORM CONTAINER
 ========================= */
 
-.login-form{
-    width:100%;
-    max-width:520px;
+.form-container{
+    width:70%;
+    max-width:800px;
 
-    padding:40px;
+    min-height:500px;
+
+    padding:35px;
 
     background:rgba(255,255,255,0.45);
 
@@ -176,52 +178,47 @@ body{
     border-radius:25px;
 
     box-shadow:0 10px 35px rgba(0,0,0,0.10);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+form{
+    width:100%;
 }
 
 
 /* =========================
-   TITLE
+   FORM HEADING
 ========================= */
 
-h3{
+.form-container h2{
+    color:#161616;
+
     text-align:center;
 
     font-size:28px;
     font-weight:700;
 
-    color:#161616;
-
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 
 /* =========================
-   HORIZONTAL LINE
-========================= */
-
-hr{
-    border:none;
-
-    height:1px;
-
-    background:rgba(0,0,0,0.15);
-
-    margin-bottom:20px;
-}
-
-
-/* =========================
-   INPUT GROUP
+   INPUT GROUPS
 ========================= */
 
 .text-group{
-    margin-bottom:18px;
+    width:100%;
+
+    margin:18px 0;
 }
 
 .text-group label{
     display:block;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 
     font-weight:600;
 
@@ -230,10 +227,11 @@ hr{
 
 
 /* =========================
-   INPUT
+   INPUT AND SELECT
 ========================= */
 
-.text-group input{
+.text-group input,
+.text-group select{
     width:100%;
 
     padding:13px 15px;
@@ -243,12 +241,20 @@ hr{
     border:1.5px solid rgba(0,0,0,0.15);
     border-radius:10px;
 
+    color:#161616;
+
     font-size:15px;
 
     transition:0.3s;
 }
 
-.text-group input:focus{
+
+/* =========================
+   INPUT FOCUS
+========================= */
+
+.text-group input:focus,
+.text-group select:focus{
     outline:none;
 
     background:rgba(255,255,255,0.8);
@@ -260,27 +266,49 @@ hr{
 
 
 /* =========================
-   BUTTON
+   BUTTON CONTAINER
 ========================= */
 
-button{
-    min-width: 140px;
-    padding: 12px 16px;
-    border: 1.5px solid #161616;
-    border-radius: 12px;
-    background: #161616;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    transition: 0.3s;
+.buttons{
+    width:100%;
+
+    margin-top:25px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
 }
 
-button:hover{
+
+/* =========================
+   NORMAL BUTTON
+========================= */
+
+.buttons button{
+    min-width:150px;
+
+    padding:12px 24px;
+
+    border:1.5px solid #161616;
+    border-radius:12px;
+
+    background:#161616;
+
+    color:#ffffff;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.buttons button:hover{
     background:transparent;
 
     color:#161616;
@@ -292,51 +320,40 @@ button:hover{
 
 
 /* =========================
-   FORM LINK
+   LINK BUTTON
 ========================= */
 
-.login-form > a,
-.login-form form + a{
-    display:block;
+.btn-link{
+    min-width:150px;
 
-    text-align:center;
+    padding:12px 24px;
 
-    margin-top:20px;
+    border:1.5px solid #161616;
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.15);
 
     color:#161616;
 
+    font-size:16px;
+    font-weight:600;
+
+    text-align:center;
     text-decoration:none;
 
-    font-weight:600;
+    display:inline-block;
 
     transition:0.3s;
 }
 
-.login-form > a:hover,
-.login-form form + a:hover{
-    opacity:0.6;
+.btn-link:hover{
+    background:#161616;
 
-    text-decoration:underline;
-}
+    color:#ffffff;
 
+    transform:translateY(-2px);
 
-/* =========================
-   ERROR BOX
-========================= */
-
-.error-box{
-    padding:10px;
-
-    margin:10px 0;
-
-    background:rgba(255,229,229,0.8);
-
-    color:#d32f2f;
-
-    border:1px solid rgba(211,47,47,0.2);
-    border-radius:8px;
-
-    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.12);
 }
 
 
@@ -367,23 +384,40 @@ button:hover{
         letter-spacing:0;
     }
 
-    .home{
-        font-size:22px;
+    .admin{
+        min-width:auto;
+
+        height:40px;
+
+        padding:0 15px;
+
+        font-size:15px;
     }
 
     .main{
-        min-height:calc(100vh - 85px);
-
         padding:15px;
     }
 
-    .login-form{
+    .form-container{
+        width:100%;
+
+        min-height:auto;
+
         padding:25px;
 
         border-radius:20px;
     }
 
-    h3{
+    .form-container h2{
         font-size:24px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .buttons button,
+    .btn-link{
+        width:100%;
     }
 }

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='admin.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-briefcase"></i>
+            </div>
+
+            <div class="logo-text">
+                INTERVIEW COACH
+            </div>
+        </div>
+        <div class ="tabs">
+            <div class="admin">
+                <a href="{{ url_for('index') }}">Back</a>
+            </div>
+
+            <div class="admin">
+                <a href="{{ url_for('view_records') }}">Users</a>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div class="main">
+
+        <div class="form-container">
+
+            <form action="{{ url_for('save_question') }}" method="POST">
+
+                <h2>Add Interview Question</h2>
+
+                <div class="text-group">
+                    <label>Job Role</label>
+                    <input type="text" name="job_role" placeholder="Enter Job Role" required>
+                </div>
+
+                <div class="text-group">
+                    <label>Subject</label>
+                    <input type="text" name="subject" placeholder="Enter Subject" required>
+                </div>
+
+                <div class="text-group">
+                    <label>Question</label>
+                    <input type="text" name="question" placeholder="Enter Question" required>
+                </div>
+
+                <div class="text-group">
+                    <label>Answer</label>
+                    <input type="text" name="answer" placeholder="Enter Answer" required>
+                </div>
+
+                <div class="text-group">
+                    <label>Key Points</label>
+                    <input type="text" name="keypoints" placeholder="Enter Key Points" required>
+                </div>
+
+                <div class="text-group">
+                    <label>Hints</label>
+                    <input type="text" name="hints" placeholder="Enter Hints" required>
+                </div>
+
+                
+                <div class="text-group">
+                    <label>Difficulty</label>
+                    <select name="difficulty" required>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+
+                <div class="buttons">
+
+
+                    <button type="submit">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Save Question
+                    </button>
+
+                    <button type="reset">Clear Form</button>
+
+                    <!-- FIXED BUTTON STRUCTURE -->
+                    <a href="{{ url_for('view_admin') }}">
+                        <button type="button">View Questions</button>
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

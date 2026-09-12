@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Records</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='view_admin.css') }}">
+
+</head>
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-briefcase"></i>
+            </div>
+
+            <div class="logo-text">
+                INTERVIEW COACH
+            </div>
+        </div>
+
+        <div class="admin">
+            <a href="{{ url_for('admin') }}">Back</a>
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="form-container">
+
+            <h2>Question Records</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Questions</th>
+                        <th>Answer</th>
+                        <th>Job Role</th>
+                        <th>Subject</th>
+                        <th>Hints</th>
+                        <th>Keypoints</th>
+                        <th>Difficulty</th>
+                        <th>Functions</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for row in records %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[6] }}</td>
+                        <td>{{ row[7] }}</td>
+                        <td><a href = "{{ url_for('Edit', id = row[0] )}}" class = "edit">Edit</a>
+                            <a href = "{{ url_for('Delete', id = row[0] )}}" class = "delete">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
