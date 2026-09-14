@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Interview Coach Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='dashboard.css') }}"
+    >
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= NAVBAR ================= -->
+
+        <div class="navbar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+                <div class="logo-text">
+                    INTERVIEW COACH
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION TABS -->
+
+            <div class="center-tabs">
+
+                <div class="about">
+                    <a href="{{ url_for('About') }}">About</a>
+                </div>
+
+
+                <!-- PROFILE BUTTON -->
+
+                <div class="profile-container">
+
+                    <button
+                        class="profile-button"
+                        onclick="openProfileSidebar()"
+                        type="button"
+                    >
+
+                        <div class="navbar-profile-pic">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <span>{{ username }}</span>
+
+                        <i class="fa-solid fa-chevron-down profile-arrow"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PROFILE OVERLAY ================= -->
+
+        <div
+            class="profile-overlay"
+            id="profileOverlay"
+            onclick="closeProfileSidebar()"
+        ></div>
+
+
+        <!-- ================= PROFILE SIDEBAR ================= -->
+
+        <div
+            class="profile-sidebar"
+            id="profileSidebar"
+        >
+
+            <!-- CLOSE BUTTON -->
+
+            <button
+                class="close-sidebar"
+                onclick="closeProfileSidebar()"
+                type="button"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+
+            <!-- PROFILE INFORMATION -->
+
+            <div class="sidebar-profile">
+
+                <div class="sidebar-profile-pic">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <h3>{{ username }}</h3>
+
+                <p>Interview Coach User</p>
+
+            </div>
+
+
+            <!-- SIDEBAR OPTIONS -->
+
+            <div class="sidebar-menu">
+
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+
+
+                <a href="{{ url_for('performance') }}">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Performance</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Interview History</span>
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Achievements</span>
+                </a>
+
+                <a href="#">
+                     <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+
+            </div>
+
+
+            <!-- LOGOUT AT BOTTOM -->
+
+            <div class="sidebar-logout">
+
+                <a href="{{ url_for('index') }}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Log out</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <div class="main">
+
+            <div class="content">
+
+
+                <!-- HERO TEXT -->
+
+                <div class="hero-text">
+
+                    <h1>
+                        Welcome back, <span>{{ username }}</span>
+                    </h1>
+
+                    <p>
+                        Prepare for interviews with confidence using AI-powered practice.
+                        Solve technical and HR questions, receive instant feedback, monitor your progress,
+                        and strengthen the skills employers value most.
+                    </p>
+
+                </div>
+
+
+                <!-- ================= DASHBOARD CARDS ================= -->
+
+                <div class="part1">
+
+                    <div class="cards">
+
+                        <i class="fa-solid fa-comments"></i>
+
+                        <div>
+
+                            <h2>{{ total_sessions }}</h2>
+
+                            <p>Sessions</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="cards">
+
+                        <i class="fa-solid fa-circle-question"></i>
+
+                        <div>
+
+                            <h2>{{ total_answered }}</h2>
+
+                            <p>Questions_Answered</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="cards">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <div>
+
+                            <h2>{{ average_score }}</h2>
+
+                            <p>Average_Score</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="cards">
+
+                        <i class="fa-solid fa-medal"></i>
+
+                        <div>
+
+                            <h2>{{ Badges }}</h2>
+
+                            <p>Badges</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+
+                <!-- ================= SUBJECT HEADING ================= -->
+
+                <div class="section-heading">
+
+                    <h1>Practice Subjects</h1>
+
+                    <p>
+                        Select a subject and start your interview preparation
+                    </p>
+
+                </div>
+
+
+                <br>
+
+
+                <!-- ================= SUBJECTS ================= -->
+
+                <div class="subjects">
+
+
+                    <!-- PYTHON -->
+
+                    <a
+                        href="{{ url_for('PY_form') }}"
+                        class="subject-card"
+                    >
+
+                        <div class="subject-top">
+
+                            <span class="subject-tag">
+                                PROGRAMMING
+                            </span>
+
+                            <span class="difficulty">
+                                Beginner → Advanced
+                            </span>
+
+                        </div>
+
+                        <div class="subject-info">
+
+                            <h2>Python</h2>
+
+                            <p>
+                                Practice Python interview questions
+                            </p>
+
+                        </div>
+
+                        <div class="subject-start">
+                            Start practice →
+                        </div>
+
+                    </a>
+
+
+                    <!-- SQL -->
+
+                    <a
+                        href="{{ url_for('SQL_form') }}"
+                        class="subject-card"
+                    >
+
+                        <div class="subject-top">
+
+                            <span class="subject-tag">
+                                DATABASE
+                            </span>
+
+                            <span class="difficulty">
+                                Beginner → Advanced
+                            </span>
+
+                        </div>
+
+                        <div class="subject-info">
+
+                            <h2>SQL</h2>
+
+                            <p>
+                                Practice database interview questions
+                            </p>
+
+                        </div>
+
+                        <div class="subject-start">
+                            Start practice →
+                        </div>
+
+                    </a>
+
+
+                    <!-- C++ -->
+
+                    <a
+                        href="{{ url_for('CPP_form') }}"
+                        class="subject-card"
+                    >
+
+                        <div class="subject-top">
+
+                            <span class="subject-tag">
+                                PROGRAMMING
+                            </span>
+
+                            <span class="difficulty">
+                                Beginner → Advanced
+                            </span>
+
+                        </div>
+
+                        <div class="subject-info">
+
+                            <h2>C++</h2>
+
+                            <p>
+                                Practice C++ interview questions
+                            </p>
+
+                        </div>
+
+                        <div class="subject-start">
+                            Start practice →
+                        </div>
+
+                    </a>
+
+
+                    <!-- JAVA -->
+
+                    <a
+                        href="{{ url_for('JAVA_form') }}"
+                        class="subject-card"
+                    >
+
+                        <div class="subject-top">
+
+                            <span class="subject-tag">
+                                PROGRAMMING
+                            </span>
+
+                            <span class="difficulty">
+                                Beginner → Advanced
+                            </span>
+
+                        </div>
+
+                        <div class="subject-info">
+
+                            <h2>Java</h2>
+
+                            <p>
+                                Practice Java interview questions
+                            </p>
+
+                        </div>
+
+                        <div class="subject-start">
+                            Start practice →
+                        </div>
+
+                    </a>
+
+
+                    <!-- NETWORKING -->
+
+                    <a
+                        href="{{ url_for('NET_form') }}"
+                        class="subject-card"
+                    >
+
+                        <div class="subject-top">
+
+                            <span class="subject-tag">
+                                COMPUTER SCIENCE
+                            </span>
+
+                            <span class="difficulty">
+                                Beginner → Advanced
+                            </span>
+
+                        </div>
+
+                        <div class="subject-info">
+
+                            <h2>Networking</h2>
+
+                            <p>
+                                Practice networking interview questions
+                            </p>
+
+                        </div>
+
+                        <div class="subject-start">
+                            Start practice →
+                        </div>
+
+                    </a>
+
+
+                    <!-- HR -->
+
+                    <a
+                        href="{{ url_for('HR_form') }}"
+                        class="subject-card"
+                    >
+
+                        <div class="subject-top">
+
+                            <span class="subject-tag">
+                                BEHAVIORAL
+                            </span>
+
+                            <span class="difficulty">
+                                All Levels
+                            </span>
+
+                        </div>
+
+                        <div class="subject-info">
+
+                            <h2>HR Round</h2>
+
+                            <p>
+                                Practice behavioral interview questions
+                            </p>
+
+                        </div>
+
+                        <div class="subject-start">
+                            Start practice →
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <br>
+
+
+                <!-- ================= QUICKSTART ================= -->
+
+                <div class="part3">
+
+                    <div class="inner">
+
+                        <div class="text">
+                            Quickstart
+                        </div>
+
+                        <div class="line">
+                            Choose a topic to begin your interview preparation
+                        </div>
+
+                        <div class="button-row">
+
+                            <a
+                                href="{{ url_for('PY_form') }}"
+                                class="button"
+                            >
+
+                                <i class="fa-brands fa-python"></i>
+
+                                Python
+
+                            </a>
+
+
+                            <a
+                                href="{{ url_for('SQL_form') }}"
+                                class="button"
+                            >
+
+                                <i class="fa-solid fa-database"></i>
+
+                                SQL
+
+                            </a>
+
+
+                            <a
+                                href="{{ url_for('HR_form') }}"
+                                class="button"
+                            >
+
+                                <i class="fa-solid fa-user-tie"></i>
+
+                                HR Round
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="footer">
+
+            <div class="footer-container">
+
+
+                <div class="footer-about">
+
+                    <h2>Interview Coach</h2>
+
+                    <p>
+                        AI-powered interview preparation platform designed to help
+                        students improve technical knowledge, communication skills,
+                        and confidence for placements.
+                    </p>
+
+
+                    <div class="social-icons">
+
+                        <!-- GitHub -->
+
+                        <a
+                            href="https://github.com/Girishmamman"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub"
+                        >
+
+                            <i class="fa-brands fa-github"></i>
+
+                        </a>
+
+
+                        <!-- LinkedIn -->
+
+                        <a
+                            href="https://www.linkedin.com/in/girish-mamman-3b255b320"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                        >
+
+                            <i class="fa-brands fa-linkedin"></i>
+
+                        </a>
+
+
+                        <!-- Email -->
+
+                        <a
+                            href="mailto:mammangirish@gmail.com"
+                            aria-label="Email"
+                        >
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER NAVIGATION -->
+
+                <div class="footer-links">
+
+                    <h3>Navigation</h3>
+
+                    <a href="/">Home</a>
+
+                    <a href="{{ url_for('About') }}">About</a>
+
+                    <a href="{{ url_for('Contact_us') }}">Contact</a>
+
+                </div>
+
+
+                <!-- PRACTICE -->
+
+                <div class="footer-links">
+
+                    <h3>Practice</h3>
+
+                    <a href="{{ url_for('PY_form') }}">Python</a>
+
+                    <a href="{{ url_for('CPP_form') }}">C++</a>
+
+                    <a href="{{ url_for('JAVA_form') }}">Java</a>
+
+                    <a href="{{ url_for('SQL_form') }}">SQL</a>
+
+                </div>
+
+
+                <!-- SUPPORT -->
+
+                <div class="footer-links">
+
+                    <h3>Support</h3>
+
+                    <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+
+                    <a href="{{ url_for('tac') }}">Terms & Conditions</a>
+
+                    <a href="{{ url_for('help') }}">Help Center</a>
+
+                    <a href="{{ url_for('feedback') }}">Feedback</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                © 2026 Interview Coach. Built with ❤️ for students preparing for placements.
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- ================= SIDEBAR JAVASCRIPT ================= -->
+
+    <script>
+
+        function openProfileSidebar() {
+
+            document
+                .getElementById("profileSidebar")
+                .classList.add("active");
+
+            document
+                .getElementById("profileOverlay")
+                .classList.add("active");
+
+        }
+
+
+        function closeProfileSidebar() {
+
+            document
+                .getElementById("profileSidebar")
+                .classList.remove("active");
+
+            document
+                .getElementById("profileOverlay")
+                .classList.remove("active");
+
+        }
+
+
+        // Close sidebar using ESC key
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+
+                closeProfileSidebar();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

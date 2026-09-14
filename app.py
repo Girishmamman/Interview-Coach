@@ -240,3 +240,64 @@ def Delete(id):
     conn.close()
 
     return redirect(url_for('view_admin'))
+
+
+# DASHBOARD PAGE
+# =========================
+@app.route('/dashboard')
+def dashboard():
+
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    username = session['username']
+
+    conn = sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
+
+    # Total Sessions
+    cur.execute("""
+        SELECT COUNT(*)
+        FROM interview_sessions
+        WHERE username=?
+    """, (username,))
+    total_sessions = cur.fetchone()[0]
+
+    # Total Questions Answered
+    cur.execute("""
+        SELECT COALESCE(SUM(answered_questions), 0)
+        FROM interview_sessions
+        WHERE username=?
+    """, (username,))
+    total_answered = cur.fetchone()[0]
+
+    # Average Score
+    cur.execute("""
+        SELECT COALESCE(AVG(overall_percentage), 0)
+        FROM interview_sessions
+        WHERE username=?
+    """, (username,))
+    average_score = round(cur.fetchone()[0], 2)
+
+    badges = 0
+
+    if total_sessions >= 5:
+        badges += 1
+
+    if average_score >= 80:
+        badges += 1
+
+    if total_answered >= 50:
+        badges += 1
+
+    conn.close()
+
+    return render_template(
+        'dashboard.html',
+        username=username,
+        total_sessions=total_sessions,
+        total_answered=total_answered,
+        average_score=average_score,
+
+        badges=badges
+    )
