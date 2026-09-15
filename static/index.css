@@ -1270,10 +1270,10 @@ body{
         align-items:center;
     }
 
-    .login-logo a{}
+    .login-logo a{
         font-size:18px;
 
         color:#161616;
     }
-
 }
+
