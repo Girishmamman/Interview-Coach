@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Edit.css') }}">
+</head>
+<body>
+    <div class = "navbar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-briefcase"></i>
+            </div>
+
+            <div class="logo-text">
+                INTERVIEW COACH
+            </div>
+        </div>
+
+        <div class="admin">
+            <a href="{{ url_for('view_admin') }}" class="view-admin">Back</a>
+        </div>
+    </div>
+
+    <div class ="main">
+        <div class ="form-container">
+
+            <form action="{{ url_for('Edit', id = question['id']) }}" method="POST">
+
+                <label for="questions">Question</label>
+                <input
+                    type="text"
+                    id="questions"
+                    name="questions"
+                    value="{{ question['questions'] }}">
+
+                <label for="answer">Answer</label>
+                <textarea
+                    id="answer"
+                    name="answer">{{ question['answer'] }}</textarea>
+
+                <label for="job_role">Job Role</label>
+                <input
+                    type="text"
+                    id="job_role"
+                    name="job_role"
+                    value="{{ question['job_role'] }}">
+
+                <label for="subject">Subject</label>
+                <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value="{{ question['subject'] }}">
+
+                <label for="hints">Hints</label>
+                <input
+                    type="text"
+                    id="hints"
+                    name="hints"
+                    value="{{ question['hints'] }}">
+
+                <label for="keypoints">Key Points</label>
+                <input
+                    type="text"
+                    id="keypoints"
+                    name="keypoints"
+                    value="{{ question['keypoints'] }}">
+
+                <label for="difficulty">Difficulty</label>
+                <input
+                    type="text"
+                    id="difficulty"
+                    name="difficulty"
+                    value="{{ question['difficulty'] }}">
+
+                <button type="submit">Update</button>
+
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
